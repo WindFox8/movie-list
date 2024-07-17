@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
       console.log(data); // Adicione isso para verificar a resposta
       this.genres = data.genres;
     }, error => {
-      console.error('Erro ao buscar gêneros:', error); // Para capturar erros
+      console.error('Erro ao buscar gêneros:', error);
     });
   }
 }
