@@ -26,8 +26,8 @@ export class TmdbApiService {
     return this.http.get<any>(`${this.apiUrl}/genre/movie/list`, this.httpOptions);
   }
 
-  getMoviesByCategory(genreId: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/discover/movie?with_genres=${genreId}`, this.httpOptions);
+  getMoviesByCategory(genreId: number, page: number = 1): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/discover/movie?with_genres=${genreId}&page=${page}`, this.httpOptions);
   }
 
   searchMovies(query: string): Observable<any> {

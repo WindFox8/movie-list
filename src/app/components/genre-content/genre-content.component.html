@@ -8,4 +8,5 @@
       <p>Votes: {{ movie.vote_count }}</p>
     </div>
   </div>
+  <button (click)="loadMore()" *ngIf="currentPage < totalPages">Load More</button>
 </div>
