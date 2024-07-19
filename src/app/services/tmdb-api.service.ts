@@ -45,4 +45,9 @@ export class TmdbApiService {
   getLatestMovies(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/movie/now_playing`, this.httpOptions);
   }
+
+  getMovieCredits(movieId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/movie/${movieId}/credits`, this.httpOptions);
+  }
+  
 }
