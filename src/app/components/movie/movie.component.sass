@@ -1,0 +1,50 @@
+.movie-details
+  width: calc( 100vw - 300px )
+  height: calc( 100vh - 75px )
+  overflow-y: auto
+
+  h2
+    font-size: 2em
+    margin-bottom: 10px
+  
+  img
+    max-width: 100%
+    margin-bottom: 20px
+  
+  h3
+    margin-top: 20px
+
+  p
+    margin: 5px 0
+
+  .carousel
+    position: relative
+    display: flex
+    align-items: center
+    margin: 10px 0
+
+    .prev, .next
+      background-color: #fff
+      border: none
+      font-size: 2em
+      cursor: pointer
+
+    .carousel-track-container
+      overflow: hidden
+      width: 100%
+
+    .carousel-track
+      display: flex
+      transition: transform 0.5s ease-in-out
+      list-style: none
+
+    .carousel-slide
+      min-width: 150px
+      margin: 0 10px
+      text-align: center
+
+      img
+        width: 100px
+        height: 150px
+        object-fit: cover
+        margin-bottom: 5px

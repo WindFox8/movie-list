@@ -7,13 +7,15 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { GenreContentComponent } from './components/genre-content/genre-content.component';
+import { MovieComponent } from './components/movie/movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     SearchBarComponent,
-    GenreContentComponent
+    GenreContentComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
