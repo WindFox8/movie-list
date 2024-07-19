@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TmdbApiService } from 'src/app/services/tmdb-api.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-genre-content',
@@ -19,16 +20,25 @@ export class GenreContentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.genreId = +params['id'];
-      this.loadMovies();
+    this.route.params.pipe(
+      switchMap(params => {
+        this.genreId = +params['id'];
+        this.currentPage = 1;
+        this.movies = []; // Clear current movies list
+        return this.tmdbApiService.getMoviesByCategory(this.genreId, this.currentPage);
+      })
+    ).subscribe(data => {
+      this.movies = data.results;
+      this.totalPages = data.total_pages;
+    }, error => {
+      console.error('Erro ao buscar filmes por gênero:', error);
     });
   }
 
   loadMovies(page: number = 1): void {
     this.tmdbApiService.getMoviesByCategory(this.genreId, page).subscribe(data => {
-      this.movies = [...this.movies, ...data.results]; // Append new movies to the existing list
-      this.totalPages = data.total_pages; // Update the total number of pages
+      this.movies = [...this.movies, ...data.results];
+      this.totalPages = data.total_pages;
     }, error => {
       console.error('Erro ao buscar filmes por gênero:', error);
     });
