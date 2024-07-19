@@ -1,12 +1,10 @@
 <div class="genre-content">
-  <h3>Movies in this Genre</h3>
-  <div class="movies">
-    <div class="movie" *ngFor="let movie of movies">
+  <ul class="movies">
+    <li class="movie" *ngFor="let movie of movies">
       <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
       <h4>{{ movie.title }}</h4>
-      <p>Rating: {{ movie.vote_average }}</p>
-      <p>Votes: {{ movie.vote_count }}</p>
-    </div>
-  </div>
+      <p>Rating: {{ movie.vote_average }} | {{ movie.vote_count }} Votes</p>
+    </li>
+  </ul>
   <button (click)="loadMore()" *ngIf="currentPage < totalPages">Load More</button>
 </div>
