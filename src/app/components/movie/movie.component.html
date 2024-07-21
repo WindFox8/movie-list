@@ -1,28 +1,33 @@
 <div *ngIf="movie" class="movie-details">
-  <h2>{{ movie.title }}</h2>
-  <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
-
-  <h3>Overview</h3>
-  <p>{{ movie.overview }}</p>
-
-  <h3>Additional Information</h3>
-  <p><strong>Original Title:</strong> {{ movie.original_title }}</p>
-  <p><strong>Original Language:</strong> {{ movie.original_language }}</p>
-  <p><strong>Duration:</strong> {{ movie.runtime }} minutes</p>
-  <p><strong>Budget:</strong> {{ movie.budget | currency:'USD' }}</p>
-  <p><strong>Revenue:</strong> {{ movie.revenue | currency:'USD' }}</p>
-  <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
-  <p><strong>Production Countries:</strong>
-    <span *ngFor="let country of movie.production_countries">{{ country.name }} </span>
-  </p>
-  <p><strong>Production Companies:</strong>
-    <span *ngFor="let company of movie.production_companies">{{ company.name }} </span>
-  </p>
-  <p><strong>Rating:</strong> {{ movie.vote_average }}</p>
-  <p><strong>Votes:</strong> {{ movie.vote_count }}</p>
-  <p><strong>Genres:</strong>
-    <span *ngFor="let genre of movie.genres">{{ genre.name }} | </span>
-  </p>
+  <div>
+    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+    <div>
+      <h2>{{ movie.title }}</h2>
+      <p><strong>Duration:</strong> {{ movie.runtime }} minutes</p>
+      <p><strong>Rating:</strong> {{ movie.vote_average }}</p>
+      <p><strong>Votes:</strong> {{ movie.vote_count }}</p>
+      <p><strong>Genres:</strong>
+        <span *ngFor="let genre of movie.genres">{{ genre.name }} | </span>
+      </p>
+      <h3>Overview</h3>
+      <p>{{ movie.overview }}</p>
+    </div>
+  </div>
+  <div>
+    <h3>Additional Information</h3>
+    <p><strong>Original Title:</strong> {{ movie.original_title }}</p>
+    <p><strong>Original Language:</strong> {{ movie.original_language }}</p>
+    <p><strong>Budget:</strong> {{ movie.budget | currency:'USD' }}</p>
+    <p><strong>Revenue:</strong> {{ movie.revenue | currency:'USD' }}</p>
+    <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+    <p><strong>Production Countries:</strong>
+      <span *ngFor="let country of movie.production_countries">{{ country.name }} </span>
+    </p>
+    <p><strong>Production Companies:</strong>
+      <span *ngFor="let company of movie.production_companies">{{ company.name }} </span>
+    </p>
+  </div>
+  
 
   <h3>Cast</h3>
   <div class="carousel">
