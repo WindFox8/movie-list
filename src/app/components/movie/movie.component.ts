@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TmdbApiService } from 'src/app/services/tmdb-api.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-movie',
@@ -17,29 +18,37 @@ export class MovieComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private tmdbApiService: TmdbApiService
+    private tmdbApiService: TmdbApiService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
-    const movieId = +this.route.snapshot.paramMap.get('id')!;
-    this.tmdbApiService.getMovieDetails(movieId).subscribe(data => {
+    this.route.params.subscribe(params => {
+      const movieId = +params['id'];
+      this.loadMovieDetails(movieId);
+    });
+  }
+
+  loadMovieDetails(id: number): void {
+    this.tmdbApiService.getMovieDetails(id).subscribe(data => {
       this.movie = data;
     });
 
-    this.tmdbApiService.getMovieCredits(movieId).subscribe(data => {
-      this.cast = data.cast;
-      this.crew = data.crew;
+    this.tmdbApiService.getMovieCredits(id).subscribe(data => {
+      this.cast = data.cast.slice(0, 10);
+      this.crew = data.crew.slice(0, 6);
     });
   }
 
   nextSlide(type: string): void {
     const track = type === 'cast' ? this.castTrack.nativeElement : this.crewTrack.nativeElement;
     const slideWidth = track.querySelector('.carousel-slide').offsetWidth;
-    track.style.transform = `translateX(-${slideWidth}px)`;
+    track.scrollBy({ left: slideWidth, behavior: 'smooth' });
   }
 
   prevSlide(type: string): void {
     const track = type === 'cast' ? this.castTrack.nativeElement : this.crewTrack.nativeElement;
-    track.style.transform = `translateX(0px)`;
+    const slideWidth = track.querySelector('.carousel-slide').offsetWidth;
+    track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
   }
 }
