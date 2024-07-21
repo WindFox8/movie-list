@@ -1,3 +1,49 @@
-p
+.search-bar
   height: 75px
   background-color: pink
+  position: relative
+  width: 500px
+
+  input
+    width: 100%
+    padding: 10px
+    font-size: 16px
+
+  ul
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    background-color: white
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
+    list-style: none
+    margin: 0
+    padding: 0
+    max-height: 400px
+    overflow-y: auto
+    z-index: 1000
+
+    li
+      display: flex
+      align-items: center
+      padding: 10px
+      cursor: pointer
+      &:hover
+        background-color: #f0f0f0
+
+      img
+        width: 50px
+        height: 75px
+        margin-right: 10px
+        object-fit: cover
+
+      div
+        display: flex
+        flex-direction: column
+
+        p
+          margin: 0
+          &:first-child
+            font-weight: bold
+          &:last-child
+            color: gray
