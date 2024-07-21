@@ -1,1 +1,21 @@
-<p>search-bar works!</p>
+<div class="search-bar">
+  <input
+    type="text"
+    placeholder="Search for a movie..."
+    (input)="onSearch($event)"
+    [(ngModel)]="query"
+  />
+  <ul *ngIf="movies.length > 0">
+    <li *ngFor="let movie of movies" (click)="goToMovie(movie.id)">
+      <img
+        *ngIf="movie.poster_path"
+        [src]="'https://image.tmdb.org/t/p/w92' + movie.poster_path"
+        alt="{{ movie.title }}"
+      />
+      <div>
+        <p>{{ movie.title }}</p>
+        <p>{{ movie.release_date }}</p>
+      </div>
+    </li>
+  </ul>
+</div>
