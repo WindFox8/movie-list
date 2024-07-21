@@ -1,9 +1,12 @@
 <div class="menu">
-  <h3>Movie List</h3>
-  <h4>Genres</h4>
-  <ul>
-    <li *ngFor="let genre of genres">
-      <a [routerLink]="['/genre', genre.id]">{{ genre.name }}</a>
-    </li>
-  </ul>
+  <h3>MovieList</h3>
+  <nav>
+    <h4>Home</h4>
+    <ul>
+      <h4>Genres</h4>
+      <li *ngFor="let genre of genres">
+        <a [routerLink]="['/genre', genre.id]">{{ genre.name }}</a>
+      </li>
+    </ul>
+  </nav>
 </div>
