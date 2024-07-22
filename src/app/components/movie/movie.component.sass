@@ -1,8 +1,8 @@
 @use '../../app.component.sass' as var
 
 .movie-details
-  width: calc( 100vw - 250px )
-  height: calc( 100vh - 75px )
+  width: calc(100vw - 250px)
+  height: calc(100vh - 75px)
   overflow-y: auto
   display: flex
   flex-direction: column
@@ -26,7 +26,7 @@
 
       .titleGenres
         margin-bottom: 30px
-        
+
         h2
           color: var.$color-4
           font-size: 2em
@@ -36,7 +36,7 @@
 
       .basicInfo
         margin-bottom: 30px
-        
+
         p
           color: var.$color-3
 
@@ -47,7 +47,7 @@
   .technicalInfo
     width: 80%
     display: grid
-    grid-template-columns: calc( 100% - 300px ) 300px
+    grid-template-columns: calc(100% - 300px) 300px
 
     div
       width: auto
@@ -58,12 +58,14 @@
         align-items: center
         margin: 10px 0
         background: white
+        overflow: hidden
 
         .prev, .next
           background-color: #fff
           border: none
           font-size: 2em
           cursor: pointer
+          z-index: 1
 
         .carousel-track-container
           overflow: hidden

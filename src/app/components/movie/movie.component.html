@@ -19,26 +19,27 @@
   <div class="technicalInfo">
 
     <div>
-  
+      <h3>Cast</h3>
       <div class="carousel">
         <button class="prev" (click)="prevSlide('cast')">&lt;</button>
         <div class="carousel-track-container">
           <ul class="carousel-track" #castTrack>
-            <li *ngFor="let member of cast.slice(0, 10)" class="carousel-slide">
+            <li *ngFor="let member of cast" class="carousel-slide">
               <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
               <p>{{ member.name }}</p>
-              <p>with {{ member.character }}</p>
+              <p>as {{ member.character }}</p>
             </li>
           </ul>
         </div>
         <button class="next" (click)="nextSlide('cast')">&gt;</button>
       </div>
 
+      <h3>Crew</h3>
       <div class="carousel">
         <button class="prev" (click)="prevSlide('crew')">&lt;</button>
         <div class="carousel-track-container">
           <ul class="carousel-track" #crewTrack>
-            <li *ngFor="let member of crew.slice(0, 6)" class="carousel-slide">
+            <li *ngFor="let member of crew" class="carousel-slide">
               <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
               <p>{{ member.name }}</p>
               <p>{{ member.job }}</p>
@@ -47,7 +48,6 @@
         </div>
         <button class="next" (click)="nextSlide('crew')">&gt;</button>
       </div>
-
     </div>
 
     <div class="additionalInfo">
@@ -64,7 +64,5 @@
         <span *ngFor="let company of movie.production_companies">{{ company.name }} </span>
       </p>
     </div>
-
   </div>
-
 </div>
