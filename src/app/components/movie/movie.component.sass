@@ -1,51 +1,89 @@
+@use '../../app.component.sass' as var
+
 .movie-details
   width: calc( 100vw - 250px )
   height: calc( 100vh - 75px )
   overflow-y: auto
+  display: flex
+  flex-direction: column
+  align-items: center
 
-  h2
-    font-size: 2em
-    margin-bottom: 10px
-  
-  img
-    max-width: 100%
-    margin-bottom: 20px
-  
-  h3
-    margin-top: 20px
-
-  p
-    margin: 5px 0
-
-  .carousel
-    position: relative
+  .mainInfo
+    background: var.$color-2
+    border: 1px solid var.$color-6
+    border-radius: 10px
+    width: 80%
+    padding: 20px
     display: flex
-    align-items: center
-    margin: 10px 0
-    background: white
+    justify-content: center
 
-    .prev, .next
-      background-color: #fff
-      border: none
-      font-size: 2em
-      cursor: pointer
+    img
+      width: 300px
+      border-radius: 10px
+      margin-right: 25px
 
-    .carousel-track-container
-      overflow: hidden
-      width: 100%
+    div
 
-    .carousel-track
-      display: flex
-      transition: transform 0.5s ease-in-out
-      list-style: none
+      .titleGenres
+        margin-bottom: 30px
+        
+        h2
+          color: var.$color-4
+          font-size: 2em
 
-    .carousel-slide
-      min-width: 150px
-      margin: 0 10px
-      text-align: center
+        p
+          color: var.$color-3
 
-      img
-        width: 100px
-        height: 150px
-        object-fit: cover
-        margin-bottom: 5px
+      .basicInfo
+        margin-bottom: 30px
+        
+        p
+          color: var.$color-3
+
+      .overview
+        text-align: justify
+        color: var.$color-3
+
+  .technicalInfo
+    width: 80%
+    display: grid
+    grid-template-columns: calc( 100% - 300px ) 300px
+
+    div
+      width: auto
+
+      .carousel
+        position: relative
+        display: flex
+        align-items: center
+        margin: 10px 0
+        background: white
+
+        .prev, .next
+          background-color: #fff
+          border: none
+          font-size: 2em
+          cursor: pointer
+
+        .carousel-track-container
+          overflow: hidden
+          width: 100%
+
+        .carousel-track
+          display: flex
+          transition: transform 0.5s ease-in-out
+          list-style: none
+
+        .carousel-slide
+          min-width: 150px
+          margin: 0 10px
+          text-align: center
+
+          img
+            width: 100px
+            height: 150px
+            object-fit: cover
+            margin-bottom: 5px
+
+    .additionalInfo
+      width: 300px

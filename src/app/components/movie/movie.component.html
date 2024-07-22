@@ -1,61 +1,70 @@
 <div *ngIf="movie" class="movie-details">
-  <div>
+  <div class="mainInfo">
     <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
     <div>
-      <h2>{{ movie.title }}</h2>
-      <p><strong>Duration:</strong> {{ movie.runtime }} minutes</p>
-      <p><strong>Rating:</strong> {{ movie.vote_average }}</p>
-      <p><strong>Votes:</strong> {{ movie.vote_count }}</p>
-      <p><strong>Genres:</strong>
-        <span *ngFor="let genre of movie.genres">{{ genre.name }} | </span>
-      </p>
-      <h3>Overview</h3>
-      <p>{{ movie.overview }}</p>
+      <div class="titleGenres">
+        <h2>{{ movie.title }}</h2>
+        <p>
+          <span *ngFor="let genre of movie.genres"> {{ genre.name }} |</span>
+        </p>
+      </div>
+      <div class="basicInfo">
+        <p><span>Duration:</span> {{ movie.runtime }} minutes</p>
+        <p><span>Rating:</span> {{ movie.vote_average }} | {{ movie.vote_count }} votes</p>
+      </div>
+      <p class="overview">{{ movie.overview }}</p>
     </div>
   </div>
-  <div>
-    <h3>Additional Information</h3>
-    <p><strong>Original Title:</strong> {{ movie.original_title }}</p>
-    <p><strong>Original Language:</strong> {{ movie.original_language }}</p>
-    <p><strong>Budget:</strong> {{ movie.budget | currency:'USD' }}</p>
-    <p><strong>Revenue:</strong> {{ movie.revenue | currency:'USD' }}</p>
-    <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
-    <p><strong>Production Countries:</strong>
-      <span *ngFor="let country of movie.production_countries">{{ country.name }} </span>
-    </p>
-    <p><strong>Production Companies:</strong>
-      <span *ngFor="let company of movie.production_companies">{{ company.name }} </span>
-    </p>
-  </div>
+
+  <div class="technicalInfo">
+
+    <div>
   
+      <div class="carousel">
+        <button class="prev" (click)="prevSlide('cast')">&lt;</button>
+        <div class="carousel-track-container">
+          <ul class="carousel-track" #castTrack>
+            <li *ngFor="let member of cast.slice(0, 10)" class="carousel-slide">
+              <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
+              <p>{{ member.name }}</p>
+              <p>with {{ member.character }}</p>
+            </li>
+          </ul>
+        </div>
+        <button class="next" (click)="nextSlide('cast')">&gt;</button>
+      </div>
 
-  <h3>Cast</h3>
-  <div class="carousel">
-    <button class="prev" (click)="prevSlide('cast')">&lt;</button>
-    <div class="carousel-track-container">
-      <ul class="carousel-track" #castTrack>
-        <li *ngFor="let member of cast.slice(0, 10)" class="carousel-slide">
-          <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
-          <p>{{ member.name }}</p>
-          <p>{{ member.character }}</p>
-        </li>
-      </ul>
+      <div class="carousel">
+        <button class="prev" (click)="prevSlide('crew')">&lt;</button>
+        <div class="carousel-track-container">
+          <ul class="carousel-track" #crewTrack>
+            <li *ngFor="let member of crew.slice(0, 6)" class="carousel-slide">
+              <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
+              <p>{{ member.name }}</p>
+              <p>{{ member.job }}</p>
+            </li>
+          </ul>
+        </div>
+        <button class="next" (click)="nextSlide('crew')">&gt;</button>
+      </div>
+
     </div>
-    <button class="next" (click)="nextSlide('cast')">&gt;</button>
+
+    <div class="additionalInfo">
+      <h3>Additional Information</h3>
+      <p><strong>Original Title:</strong> {{ movie.original_title }}</p>
+      <p><strong>Original Language:</strong> {{ movie.original_language }}</p>
+      <p><strong>Budget:</strong> {{ movie.budget | currency:'USD' }}</p>
+      <p><strong>Revenue:</strong> {{ movie.revenue | currency:'USD' }}</p>
+      <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+      <p><strong>Production Countries:</strong>
+        <span *ngFor="let country of movie.production_countries">{{ country.name }} </span>
+      </p>
+      <p><strong>Production Companies:</strong>
+        <span *ngFor="let company of movie.production_companies">{{ company.name }} </span>
+      </p>
+    </div>
+
   </div>
 
-  <h3>Technical Team</h3>
-  <div class="carousel">
-    <button class="prev" (click)="prevSlide('crew')">&lt;</button>
-    <div class="carousel-track-container">
-      <ul class="carousel-track" #crewTrack>
-        <li *ngFor="let member of crew.slice(0, 6)" class="carousel-slide">
-          <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
-          <p>{{ member.name }}</p>
-          <p>{{ member.job }}</p>
-        </li>
-      </ul>
-    </div>
-    <button class="next" (click)="nextSlide('crew')">&gt;</button>
-  </div>
 </div>
