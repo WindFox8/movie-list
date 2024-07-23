@@ -13,8 +13,8 @@ export class MovieComponent implements OnInit {
   cast: any[] = [];
   crew: any[] = [];
 
-  @ViewChild('castTrack') castTrack!: ElementRef;
-  @ViewChild('crewTrack') crewTrack!: ElementRef;
+  @ViewChild('castTrack', { static: false }) castTrack!: ElementRef;
+  @ViewChild('crewTrack', { static: false }) crewTrack!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,13 +42,17 @@ export class MovieComponent implements OnInit {
 
   nextSlide(type: string): void {
     const track = type === 'cast' ? this.castTrack.nativeElement : this.crewTrack.nativeElement;
-    const slideWidth = track.querySelector('.carousel-slide').offsetWidth;
-    track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+    const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 20; // Including margin
+    const currentTransform = track.style.transform.replace(/[^-\d.]/g, '');
+    const newTransform = currentTransform ? +currentTransform - slideWidth : -slideWidth;
+    track.style.transform = `translateX(${newTransform}px)`;
   }
 
   prevSlide(type: string): void {
     const track = type === 'cast' ? this.castTrack.nativeElement : this.crewTrack.nativeElement;
-    const slideWidth = track.querySelector('.carousel-slide').offsetWidth;
-    track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+    const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 20; // Including margin
+    const currentTransform = track.style.transform.replace(/[^-\d.]/g, '');
+    const newTransform = currentTransform ? +currentTransform + slideWidth : slideWidth;
+    track.style.transform = `translateX(${newTransform}px)`;
   }
 }
