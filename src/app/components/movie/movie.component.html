@@ -18,49 +18,70 @@
 
   <div class="technicalInfo">
 
-    <div>
-      <h3>Cast</h3>
-      <div class="carousel">
-        <button class="prev" (click)="prevSlide('cast')">&lt;</button>
-        <div class="carousel-track-container">
-          <ul class="carousel-track" #castTrack>
-            <li *ngFor="let member of cast" class="carousel-slide">
-              <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
-              <p>{{ member.name }}</p>
-              <p>as {{ member.character }}</p>
-            </li>
-          </ul>
+    <div class="casting">
+      <section>
+        <h3>Cast</h3>
+        <div class="carousel">
+          <button class="prev" (click)="prevSlide('cast')">&lt;</button>
+          <div class="carousel-track-container">
+            <ul class="carousel-track" #castTrack>
+              <li *ngFor="let member of cast" class="carousel-slide">
+                <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
+                <p>{{ member.name }}</p>
+                <span>as {{ member.character }}</span>
+              </li>
+            </ul>
+          </div>
+          <button class="next" (click)="nextSlide('cast')">&gt;</button>
         </div>
-        <button class="next" (click)="nextSlide('cast')">&gt;</button>
-      </div>
+      </section>
 
-      <h3>Crew</h3>
-      <div class="carousel">
-        <button class="prev" (click)="prevSlide('crew')">&lt;</button>
-        <div class="carousel-track-container">
-          <ul class="carousel-track" #crewTrack>
-            <li *ngFor="let member of crew" class="carousel-slide">
-              <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
-              <p>{{ member.name }}</p>
-              <p>{{ member.job }}</p>
-            </li>
-          </ul>
+      <section>
+        <h3>Crew</h3>
+        <div class="carousel">
+          <button class="prev" (click)="prevSlide('crew')">&lt;</button>
+          <div class="carousel-track-container">
+            <ul class="carousel-track" #crewTrack>
+              <li *ngFor="let member of crew" class="carousel-slide">
+                <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
+                <p>{{ member.name }}</p>
+                <span>{{ member.job }}</span>
+              </li>
+            </ul>
+          </div>
+          <button class="next" (click)="nextSlide('crew')">&gt;</button>
         </div>
-        <button class="next" (click)="nextSlide('crew')">&gt;</button>
-      </div>
+      </section>
     </div>
 
     <div class="additionalInfo">
       <h3>Additional Information</h3>
-      <p><strong>Original Title:</strong> {{ movie.original_title }}</p>
-      <p><strong>Original Language:</strong> {{ movie.original_language }}</p>
-      <p><strong>Budget:</strong> {{ movie.budget | currency:'USD' }}</p>
-      <p><strong>Revenue:</strong> {{ movie.revenue | currency:'USD' }}</p>
-      <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
-      <p><strong>Production Countries:</strong>
+      <p>
+        Original Title: <br> 
+        <span>{{ movie.original_title }}</span>
+      </p>
+      <p>
+        Original Language: <br>
+        <span>{{ movie.original_language }}</span>
+      </p>
+      <p>
+        Budget: <br> 
+        <span>{{ movie.budget | currency:'USD' }}</span>
+      </p>
+      <p>
+        Revenue: <br>
+        <span> {{ movie.revenue | currency:'USD' }} </span>
+      </p>
+      <p>
+        Release Date: <br> 
+        <span>{{ movie.release_date }}</span>
+      </p>
+      <p>
+        Production Countries: <br>
         <span *ngFor="let country of movie.production_countries">{{ country.name }} </span>
       </p>
-      <p><strong>Production Companies:</strong>
+      <p>
+        Production Companies: <br>
         <span *ngFor="let company of movie.production_companies">{{ company.name }} </span>
       </p>
     </div>

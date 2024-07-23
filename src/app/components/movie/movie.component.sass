@@ -1,9 +1,9 @@
 @use '../../app.component.sass' as var
 
 .movie-details
-  width: calc(100vw - 250px)
+  width: calc(100vw - 300px)
   height: calc(100vh - 75px)
-  overflow-y: auto
+  overflow-y: scroll
   display: flex
   flex-direction: column
   align-items: center
@@ -40,6 +40,9 @@
         p
           color: var.$color-3
 
+          span
+            font-weight: bold
+
       .overview
         text-align: justify
         color: var.$color-3
@@ -47,45 +50,76 @@
   .technicalInfo
     width: 80%
     display: grid
-    grid-template-columns: calc(100% - 300px) 300px
+    grid-template-columns: calc(100% - 280px) 280px
+    margin: 20px 0
+    gap: 20px
 
-    div
+
+    .casting
       width: auto
+      color: var.$color-4
+      gap: 20px
+      display: flex
+      flex-direction: column
 
-      .carousel
-        position: relative
-        display: flex
-        align-items: center
-        margin: 10px 0
-        background: white
-        overflow: hidden
+      section
+        background: var.$color-2
+        border: 1px solid var.$color-6
+        border-radius: 10px
+        padding: 20px
 
-        .prev, .next
-          background-color: #fff
-          border: none
-          font-size: 2em
-          cursor: pointer
-          z-index: 1
-
-        .carousel-track-container
-          overflow: hidden
-          width: 100%
-
-        .carousel-track
+        .carousel
+          position: relative
           display: flex
-          transition: transform 0.5s ease-in-out
-          list-style: none
+          align-items: center
+          margin: 20px 0
+          overflow: hidden
 
-        .carousel-slide
-          min-width: 150px
-          margin: 0 10px
-          text-align: center
+          .prev, .next
+            background-color: #fff
+            border: none
+            font-size: 2em
+            cursor: pointer
+            z-index: 1
 
-          img
-            width: 100px
-            height: 150px
-            object-fit: cover
-            margin-bottom: 5px
+          .carousel-track-container
+            overflow: hidden
+            width: 100%
+
+          .carousel-track
+            display: flex
+            transition: transform 0.5s ease-in-out
+            list-style: none
+
+          .carousel-slide
+            min-width: 150px
+            margin: 0 10px
+            text-align: center
+
+            img
+              width: 100px
+              height: 150px
+              object-fit: cover
+              margin-bottom: 5px
+
+            span
+              color: var.$color-3
 
     .additionalInfo
-      width: 300px
+      width: 260px
+      background: var.$color-2
+      border: 1px solid var.$color-6
+      border-radius: 10px
+      padding: 20px
+      color: var.$color-4
+
+      h3
+        margin-bottom: 20px
+
+      p
+        margin: 10px 0
+        line-height: 20px
+
+        span
+          color: var.$color-3
+          
