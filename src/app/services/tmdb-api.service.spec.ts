@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TmdbApiService } from './tmdb-api.service';
+import { PaginatedResponse, GenresResponse, Movie, Genre } from 'src/app/interfaces/imdb-interfaces';
 
 describe('TmdbApiService', () => {
   let service: TmdbApiService;
@@ -26,7 +27,7 @@ describe('TmdbApiService', () => {
   });
 
   it('should get top rated movies', () => {
-    const mockResponse = { results: [{ title: 'Movie 1' }, { title: 'Movie 2' }] };
+    const mockResponse: PaginatedResponse<Movie> = { page: 1, results: [{ id: 1, title: 'Movie 1', overview: '', release_date: '', poster_path: '' }, { id: 2, title: 'Movie 2', overview: '', release_date: '', poster_path: '' }], total_pages: 1, total_results: 2 };
 
     service.getTopRatedMovies().subscribe((movies) => {
       expect(movies.results.length).toBe(2);
@@ -40,7 +41,7 @@ describe('TmdbApiService', () => {
   });
 
   it('should get genres', () => {
-    const mockResponse = { genres: [{ id: 1, name: 'Action' }, { id: 2, name: 'Comedy' }] };
+    const mockResponse: GenresResponse = { genres: [{ id: 1, name: 'Action' }, { id: 2, name: 'Comedy' }] };
 
     service.getGenres().subscribe((genres) => {
       expect(genres.genres.length).toBe(2);
@@ -54,7 +55,7 @@ describe('TmdbApiService', () => {
   });
 
   it('should get top movies of the week', () => {
-    const mockResponse = { results: [{ title: 'Trending Movie 1' }] };
+    const mockResponse: PaginatedResponse<Movie> = { page: 1, results: [{ id: 1, title: 'Trending Movie 1', overview: '', release_date: '', poster_path: '' }], total_pages: 1, total_results: 1 };
 
     service.getTopMoviesOfWeek().subscribe((movies) => {
       expect(movies.results.length).toBe(1);
@@ -68,7 +69,7 @@ describe('TmdbApiService', () => {
   });
 
   it('should get latest movies', () => {
-    const mockResponse = { results: [{ title: 'Latest Movie 1' }] };
+    const mockResponse: PaginatedResponse<Movie> = { page: 1, results: [{ id: 1, title: 'Latest Movie 1', overview: '', release_date: '', poster_path: '' }], total_pages: 1, total_results: 1 };
 
     service.getLatestMovies().subscribe((movies) => {
       expect(movies.results.length).toBe(1);
@@ -83,7 +84,7 @@ describe('TmdbApiService', () => {
 
   it('should search movies', () => {
     const query = 'test';
-    const mockResponse = { results: [{ title: 'Search Movie 1' }] };
+    const mockResponse: PaginatedResponse<Movie> = { page: 1, results: [{ id: 1, title: 'Search Movie 1', overview: '', release_date: '', poster_path: '' }], total_pages: 1, total_results: 1 };
 
     service.searchMovies(query).subscribe((movies) => {
       expect(movies.results.length).toBe(1);
@@ -98,7 +99,7 @@ describe('TmdbApiService', () => {
 
   it('should get movie details', () => {
     const movieId = 1;
-    const mockResponse = { title: 'Movie 1', overview: 'Overview of Movie 1' };
+    const mockResponse: Movie = { id: movieId, title: 'Movie 1', overview: 'Overview of Movie 1', release_date: '', poster_path: '' };
 
     service.getMovieDetails(movieId).subscribe((movie) => {
       expect(movie.title).toBe('Movie 1');
