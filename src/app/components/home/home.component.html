@@ -2,7 +2,9 @@
   <div class="carousel-container">
     <h2>Latest Movies</h2>
     <div class="carousel">
-      <button class="prev" (click)="prevSlide('latest')">&lt;</button>
+      <button class="prev" (click)="prevSlide('latest')">
+        <img src="../../../assets/arrow-left-solid.svg" alt="left-arrow">
+      </button>
       <div class="carousel-track-container">
         <ul class="carousel-track" #latestTrack>
           <li *ngFor="let movie of latestMovies" class="carousel-slide">
@@ -14,14 +16,18 @@
           </li>
         </ul>
       </div>
-      <button class="next" (click)="nextSlide('latest')">&gt;</button>
+      <button class="next" (click)="nextSlide('latest')">
+        <img src="../../../assets/arrow-right-solid.svg" alt="right-arrow">
+      </button>
     </div>
   </div>
 
   <div class="carousel-container">
     <h2>Top Movies of the Week</h2>
     <div class="carousel">
-      <button class="prev" (click)="prevSlide('week')">&lt;</button>
+      <button class="prev" (click)="prevSlide('week')">
+        <img src="../../../assets/arrow-left-solid.svg" alt="left-arrow">
+      </button>
       <div class="carousel-track-container">
         <ul class="carousel-track" #weekTrack>
           <li *ngFor="let movie of topMoviesOfWeek" class="carousel-slide">
@@ -33,14 +39,18 @@
           </li>
         </ul>
       </div>
-      <button class="next" (click)="nextSlide('week')">&gt;</button>
+      <button class="next" (click)="nextSlide('week')">
+        <img src="../../../assets/arrow-right-solid.svg" alt="right-arrow">
+      </button>
     </div>
   </div>
 
   <div class="carousel-container">
     <h2>Top Rated Movies</h2>
     <div class="carousel">
-      <button class="prev" (click)="prevSlide('topRated')">&lt;</button>
+      <button class="prev" (click)="prevSlide('topRated')">
+        <img src="../../../assets/arrow-left-solid.svg" alt="left-arrow">
+      </button>
       <div class="carousel-track-container">
         <ul class="carousel-track" #topRatedTrack>
           <li *ngFor="let movie of topRatedMovies" class="carousel-slide">
@@ -52,7 +62,9 @@
           </li>
         </ul>
       </div>
-      <button class="next" (click)="nextSlide('topRated')">&gt;</button>
+      <button class="next" (click)="nextSlide('topRated')">
+        <img src="../../../assets/arrow-right-solid.svg" alt="right-arrow">
+      </button>
     </div>
   </div>
 </div>
