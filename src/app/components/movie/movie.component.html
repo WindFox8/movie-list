@@ -22,7 +22,9 @@
       <section>
         <h3>Cast</h3>
         <div class="carousel">
-          <button class="prev" (click)="prevSlide('cast')">&lt;</button>
+          <button class="prev" (click)="prevSlide('cast')">
+            <img src="../../../assets/arrow-left-solid.svg" alt="left-arrow">
+          </button>
           <div class="carousel-track-container">
             <ul class="carousel-track" #castTrack>
               <li *ngFor="let member of cast" class="carousel-slide">
@@ -32,14 +34,18 @@
               </li>
             </ul>
           </div>
-          <button class="next" (click)="nextSlide('cast')">&gt;</button>
+          <button class="next" (click)="nextSlide('cast')">
+            <img src="../../../assets/arrow-right-solid.svg" alt="right-arrow">
+          </button>
         </div>
       </section>
 
       <section>
         <h3>Crew</h3>
         <div class="carousel">
-          <button class="prev" (click)="prevSlide('crew')">&lt;</button>
+          <button class="prev" (click)="prevSlide('crew')">
+            <img src="../../../assets/arrow-left-solid.svg" alt="left-arrow">
+          </button>
           <div class="carousel-track-container">
             <ul class="carousel-track" #crewTrack>
               <li *ngFor="let member of crew" class="carousel-slide">
@@ -49,7 +55,9 @@
               </li>
             </ul>
           </div>
-          <button class="next" (click)="nextSlide('crew')">&gt;</button>
+          <button class="next" (click)="nextSlide('crew')">
+            <img src="../../../assets/arrow-right-solid.svg" alt="right-arrow">
+          </button>
         </div>
       </section>
     </div>
