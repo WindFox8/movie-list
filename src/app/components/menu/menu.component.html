@@ -1,11 +1,11 @@
 <div class="menu">
   <h3>MovieList</h3>
   <nav>
-    <h4><a [routerLink]="['/']">Home</a></h4>
+    <h4><a [routerLink]="['/']" routerLinkActive="active-link">Home</a></h4>
     <ul>
       <h4>Genres</h4>
       <li *ngFor="let genre of genres">
-        <a [routerLink]="['/genre', genre.id]">{{ genre.name }}</a>
+        <a [routerLink]="['/genre', genre.id]" routerLinkActive="active-link">{{ genre.name }}</a>
       </li>
     </ul>
   </nav>
