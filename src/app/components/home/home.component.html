@@ -9,7 +9,7 @@
             <a [routerLink]="['/movie', movie.id]">
               <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w185' + movie.poster_path" alt="{{ movie.title }}">
               <p>{{ movie.title }}</p>
-              <span>{{ movie.release_date }}</span>
+              <span>Rating: {{ movie.vote_average }} | {{ movie.vote_count }} Votes</span>
             </a>
           </li>
         </ul>
@@ -28,7 +28,7 @@
             <a [routerLink]="['/movie', movie.id]">
               <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w185' + movie.poster_path" alt="{{ movie.title }}">
               <p>{{ movie.title }}</p>
-              <span>{{ movie.release_date }}</span>
+              <span>Rating: {{ movie.vote_average }} | {{ movie.vote_count }} Votes</span>
             </a>
           </li>
         </ul>
@@ -47,7 +47,7 @@
             <a [routerLink]="['/movie', movie.id]">
               <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w185' + movie.poster_path" alt="{{ movie.title }}">
               <p>{{ movie.title }}</p>
-              <span>{{ movie.release_date }}</span>
+              <span>Rating: {{ movie.vote_average }} | {{ movie.vote_count }} Votes</span>
             </a>
           </li>
         </ul>
