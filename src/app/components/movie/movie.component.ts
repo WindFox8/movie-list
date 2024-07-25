@@ -42,7 +42,7 @@ export class MovieComponent implements OnInit {
 
   nextSlide(type: string): void {
     const track = type === 'cast' ? this.castTrack.nativeElement : this.crewTrack.nativeElement;
-    const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 20; // Including margin
+    const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 20; 
     const currentTransform = track.style.transform.replace(/[^-\d.]/g, '');
     const newTransform = currentTransform ? +currentTransform - slideWidth : -slideWidth;
     track.style.transform = `translateX(${newTransform}px)`;
@@ -50,7 +50,7 @@ export class MovieComponent implements OnInit {
 
   prevSlide(type: string): void {
     const track = type === 'cast' ? this.castTrack.nativeElement : this.crewTrack.nativeElement;
-    const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 20; // Including margin
+    const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 20; 
     const currentTransform = track.style.transform.replace(/[^-\d.]/g, '');
     const newTransform = currentTransform ? +currentTransform + slideWidth : slideWidth;
     track.style.transform = `translateX(${newTransform}px)`;
