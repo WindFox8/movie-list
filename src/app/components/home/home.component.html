@@ -1,0 +1,58 @@
+<div class="home">
+  <div class="carousel-container">
+    <h2>Latest Movies</h2>
+    <div class="carousel">
+      <button class="prev" (click)="prevSlide('latest')">&lt;</button>
+      <div class="carousel-track-container">
+        <ul class="carousel-track" #latestTrack>
+          <li *ngFor="let movie of latestMovies" class="carousel-slide">
+            <a [routerLink]="['/movie', movie.id]">
+              <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w185' + movie.poster_path" alt="{{ movie.title }}">
+              <p>{{ movie.title }}</p>
+              <span>Rating: {{ movie.vote_average }} | {{ movie.vote_count }} Votes</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <button class="next" (click)="nextSlide('latest')">&gt;</button>
+    </div>
+  </div>
+
+  <div class="carousel-container">
+    <h2>Top Movies of the Week</h2>
+    <div class="carousel">
+      <button class="prev" (click)="prevSlide('week')">&lt;</button>
+      <div class="carousel-track-container">
+        <ul class="carousel-track" #weekTrack>
+          <li *ngFor="let movie of topMoviesOfWeek" class="carousel-slide">
+            <a [routerLink]="['/movie', movie.id]">
+              <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w185' + movie.poster_path" alt="{{ movie.title }}">
+              <p>{{ movie.title }}</p>
+              <span>Rating: {{ movie.vote_average }} | {{ movie.vote_count }} Votes</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <button class="next" (click)="nextSlide('week')">&gt;</button>
+    </div>
+  </div>
+
+  <div class="carousel-container">
+    <h2>Top Rated Movies</h2>
+    <div class="carousel">
+      <button class="prev" (click)="prevSlide('topRated')">&lt;</button>
+      <div class="carousel-track-container">
+        <ul class="carousel-track" #topRatedTrack>
+          <li *ngFor="let movie of topRatedMovies" class="carousel-slide">
+            <a [routerLink]="['/movie', movie.id]">
+              <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w185' + movie.poster_path" alt="{{ movie.title }}">
+              <p>{{ movie.title }}</p>
+              <span>Rating: {{ movie.vote_average }} | {{ movie.vote_count }} Votes</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <button class="next" (click)="nextSlide('topRated')">&gt;</button>
+    </div>
+  </div>
+</div>
