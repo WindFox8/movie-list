@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { TmdbApiService } from 'src/app/services/tmdb-api.service';
 
@@ -18,7 +17,6 @@ export class MenuComponent implements OnInit {
 
   loadGenres(): void {
     this.tmdbApiService.getGenres().subscribe(data => {
-      console.log(data); // Adicione isso para verificar a resposta
       this.genres = data.genres;
     }, error => {
       console.error('Erro ao buscar gêneros:', error);
