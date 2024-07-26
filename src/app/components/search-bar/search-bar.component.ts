@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TmdbApiService } from 'src/app/services/tmdb-api.service';
+import { Movie, PaginatedResponse } from 'src/app/interfaces/imdb-interfaces';
 
 @Component({
   selector: 'app-search-bar',
@@ -9,7 +10,7 @@ import { TmdbApiService } from 'src/app/services/tmdb-api.service';
 })
 export class SearchBarComponent {
   query: string = '';
-  movies: any[] = [];
+  movies: Movie[] = [];
 
   constructor(
     private tmdbApiService: TmdbApiService,
@@ -19,7 +20,7 @@ export class SearchBarComponent {
   onSearch(event: any): void {
     const query = event.target.value.trim();
     if (query.length > 0) {
-      this.tmdbApiService.searchMovies(query).subscribe(data => {
+      this.tmdbApiService.searchMovies(query).subscribe((data: PaginatedResponse<Movie>) => {
         this.movies = data.results;
       });
     } else {

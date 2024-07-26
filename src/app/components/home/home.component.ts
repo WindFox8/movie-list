@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TmdbApiService } from 'src/app/services/tmdb-api.service';
+import { Movie, PaginatedResponse } from 'src/app/interfaces/imdb-interfaces';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,9 @@ import { TmdbApiService } from 'src/app/services/tmdb-api.service';
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
-  latestMovies: any[] = [];
-  topMoviesOfWeek: any[] = [];
-  topRatedMovies: any[] = [];
+  latestMovies: Movie[] = [];
+  topMoviesOfWeek: Movie[] = [];
+  topRatedMovies: Movie[] = [];
 
   @ViewChild('latestTrack', { static: false }) latestTrack!: ElementRef;
   @ViewChild('weekTrack', { static: false }) weekTrack!: ElementRef;
@@ -18,15 +19,15 @@ export class HomeComponent implements OnInit {
   constructor(private tmdbApiService: TmdbApiService) {}
 
   ngOnInit(): void {
-    this.tmdbApiService.getLatestMovies().subscribe(data => {
+    this.tmdbApiService.getLatestMovies().subscribe((data: PaginatedResponse<Movie>) => {
       this.latestMovies = data.results;
     });
 
-    this.tmdbApiService.getTopMoviesOfWeek().subscribe(data => {
+    this.tmdbApiService.getTopMoviesOfWeek().subscribe((data: PaginatedResponse<Movie>) => {
       this.topMoviesOfWeek = data.results;
     });
 
-    this.tmdbApiService.getTopRatedMovies().subscribe(data => {
+    this.tmdbApiService.getTopRatedMovies().subscribe((data: PaginatedResponse<Movie>) => {
       this.topRatedMovies = data.results;
     });
   }

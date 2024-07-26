@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TmdbApiService } from 'src/app/services/tmdb-api.service';
 import { Location } from '@angular/common';
+import { Movie, MovieCredits, CastMember, CrewMember } from 'src/app/interfaces/imdb-interfaces';
 
 @Component({
   selector: 'app-movie',
@@ -9,9 +10,9 @@ import { Location } from '@angular/common';
   styleUrls: ['./movie.component.sass']
 })
 export class MovieComponent implements OnInit {
-  movie: any;
-  cast: any[] = [];
-  crew: any[] = [];
+  movie!: Movie;
+  cast: CastMember[] = [];
+  crew: CrewMember[] = [];
 
   @ViewChild('castTrack', { static: false }) castTrack!: ElementRef;
   @ViewChild('crewTrack', { static: false }) crewTrack!: ElementRef;
@@ -30,11 +31,11 @@ export class MovieComponent implements OnInit {
   }
 
   loadMovieDetails(id: number): void {
-    this.tmdbApiService.getMovieDetails(id).subscribe(data => {
+    this.tmdbApiService.getMovieDetails(id).subscribe((data: Movie) => {
       this.movie = data;
     });
 
-    this.tmdbApiService.getMovieCredits(id).subscribe(data => {
+    this.tmdbApiService.getMovieCredits(id).subscribe((data: MovieCredits) => {
       this.cast = data.cast.slice(0, 10);
       this.crew = data.crew.slice(0, 6);
     });
