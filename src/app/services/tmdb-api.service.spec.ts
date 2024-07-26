@@ -27,7 +27,15 @@ describe('TmdbApiService', () => {
   });
 
   it('should get top rated movies', () => {
-    const mockResponse: PaginatedResponse<Movie> = { page: 1, results: [{ id: 1, title: 'Movie 1', overview: '', release_date: '', poster_path: '' }, { id: 2, title: 'Movie 2', overview: '', release_date: '', poster_path: '' }], total_pages: 1, total_results: 2 };
+    const mockResponse: PaginatedResponse<Movie> = {
+      page: 1,
+      results: [
+        { id: 1, title: 'Movie 1', overview: '', release_date: '', poster_path: '', backdrop_path: '', vote_average: 0, vote_count: 0, genres: [], runtime: 0, original_title: '', original_language: '', budget: 0, revenue: 0, production_countries: [], production_companies: [] },
+        { id: 2, title: 'Movie 2', overview: '', release_date: '', poster_path: '', backdrop_path: '', vote_average: 0, vote_count: 0, genres: [], runtime: 0, original_title: '', original_language: '', budget: 0, revenue: 0, production_countries: [], production_companies: [] }
+      ],
+      total_pages: 1,
+      total_results: 2
+    };
 
     service.getTopRatedMovies().subscribe((movies) => {
       expect(movies.results.length).toBe(2);
@@ -55,7 +63,14 @@ describe('TmdbApiService', () => {
   });
 
   it('should get top movies of the week', () => {
-    const mockResponse: PaginatedResponse<Movie> = { page: 1, results: [{ id: 1, title: 'Trending Movie 1', overview: '', release_date: '', poster_path: '' }], total_pages: 1, total_results: 1 };
+    const mockResponse: PaginatedResponse<Movie> = {
+      page: 1,
+      results: [
+        { id: 1, title: 'Trending Movie 1', overview: '', release_date: '', poster_path: '', backdrop_path: '', vote_average: 0, vote_count: 0, genres: [], runtime: 0, original_title: '', original_language: '', budget: 0, revenue: 0, production_countries: [], production_companies: [] }
+      ],
+      total_pages: 1,
+      total_results: 1
+    };
 
     service.getTopMoviesOfWeek().subscribe((movies) => {
       expect(movies.results.length).toBe(1);
@@ -69,7 +84,14 @@ describe('TmdbApiService', () => {
   });
 
   it('should get latest movies', () => {
-    const mockResponse: PaginatedResponse<Movie> = { page: 1, results: [{ id: 1, title: 'Latest Movie 1', overview: '', release_date: '', poster_path: '' }], total_pages: 1, total_results: 1 };
+    const mockResponse: PaginatedResponse<Movie> = {
+      page: 1,
+      results: [
+        { id: 1, title: 'Latest Movie 1', overview: '', release_date: '', poster_path: '', backdrop_path: '', vote_average: 0, vote_count: 0, genres: [], runtime: 0, original_title: '', original_language: '', budget: 0, revenue: 0, production_countries: [], production_companies: [] }
+      ],
+      total_pages: 1,
+      total_results: 1
+    };
 
     service.getLatestMovies().subscribe((movies) => {
       expect(movies.results.length).toBe(1);
@@ -84,7 +106,14 @@ describe('TmdbApiService', () => {
 
   it('should search movies', () => {
     const query = 'test';
-    const mockResponse: PaginatedResponse<Movie> = { page: 1, results: [{ id: 1, title: 'Search Movie 1', overview: '', release_date: '', poster_path: '' }], total_pages: 1, total_results: 1 };
+    const mockResponse: PaginatedResponse<Movie> = {
+      page: 1,
+      results: [
+        { id: 1, title: 'Search Movie 1', overview: '', release_date: '', poster_path: '', backdrop_path: '', vote_average: 0, vote_count: 0, genres: [], runtime: 0, original_title: '', original_language: '', budget: 0, revenue: 0, production_countries: [], production_companies: [] }
+      ],
+      total_pages: 1,
+      total_results: 1
+    };
 
     service.searchMovies(query).subscribe((movies) => {
       expect(movies.results.length).toBe(1);
@@ -99,7 +128,24 @@ describe('TmdbApiService', () => {
 
   it('should get movie details', () => {
     const movieId = 1;
-    const mockResponse: Movie = { id: movieId, title: 'Movie 1', overview: 'Overview of Movie 1', release_date: '', poster_path: '' };
+    const mockResponse: Movie = {
+      id: movieId,
+      title: 'Movie 1',
+      overview: 'Overview of Movie 1',
+      release_date: '',
+      poster_path: '',
+      backdrop_path: '',
+      vote_average: 0,
+      vote_count: 0,
+      genres: [],
+      runtime: 0,
+      original_title: '',
+      original_language: '',
+      budget: 0,
+      revenue: 0,
+      production_countries: [],
+      production_companies: []
+    };
 
     service.getMovieDetails(movieId).subscribe((movie) => {
       expect(movie.title).toBe('Movie 1');
