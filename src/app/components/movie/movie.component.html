@@ -1,6 +1,6 @@
 <div *ngIf="movie" class="movie-details">
   <div class="mainInfo">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+    <img [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : 'src/assets/user-solid.svg'" alt="{{ movie.title }}">
     <div>
       <div class="titleGenres">
         <h2>{{ movie.title }}</h2>
@@ -20,7 +20,7 @@
 
     <div class="casting">
       <section>
-        <h3>Cast</h3>
+        <h3>Casting</h3>
         <div class="carousel">
           <button class="prev" (click)="prevSlide('cast')">
             <img src="../../../assets/arrow-left-solid.svg" alt="left-arrow">
@@ -28,7 +28,7 @@
           <div class="carousel-track-container">
             <ul class="carousel-track" #castTrack>
               <li *ngFor="let member of cast" class="carousel-slide">
-                <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
+                <img [src]="member.profile_path ? 'https://image.tmdb.org/t/p/w185' + member.profile_path : '../../../assets/user-solid.svg'" alt="{{ member.name }}">
                 <p>{{ member.name }}</p>
                 <span>as {{ member.character }}</span>
               </li>
@@ -41,7 +41,7 @@
       </section>
 
       <section>
-        <h3>Crew</h3>
+        <h3>Technical Team</h3>
         <div class="carousel">
           <button class="prev" (click)="prevSlide('crew')">
             <img src="../../../assets/arrow-left-solid.svg" alt="left-arrow">
@@ -49,7 +49,7 @@
           <div class="carousel-track-container">
             <ul class="carousel-track" #crewTrack>
               <li *ngFor="let member of crew" class="carousel-slide">
-                <img *ngIf="member.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + member.profile_path" alt="{{ member.name }}">
+                <img [src]="member.profile_path ? 'https://image.tmdb.org/t/p/w185' + member.profile_path : '../../../assets/user-solid.svg'" alt="{{ member.name }}">
                 <p>{{ member.name }}</p>
                 <span>{{ member.job }}</span>
               </li>
